@@ -1,0 +1,23 @@
+<h1>Employee Update Form</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="">Name : </label>
+    <input type="text" name="e_name" value="{{employee.name}}">
+    <label for="">Email : </label>
+    <input type="email" name="email" value="{{employee.email}}">
+    <label for="">Salary : </label>
+    <input type="number" name="salary" value="{{employee.salary}}">
+    <label for="">Username : </label>
+    <input type="text" name="u_name" value="{{employee.username}}">
+    <label for="">Password : </label>
+    <input type="password" name="password" value="{{employee.password}}">
+    <label for="">Date of Birth : </label>
+    <input type="date" name="dob" value="{{employee.dob | date:'Y-m-d'}}">
+    <label for="">Terms & Conditions : </label>
+    <input type="checkbox" name="terms" checked="{{employee.terms}}">
+    <button>Update Employee</button>
+    <a href="{% url 'employee_list' %}">Back</a>
+</form>
+
+<p style="color: red;">{{error}}</p>

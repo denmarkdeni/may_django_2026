@@ -1,0 +1,29 @@
+h1, p, .img-box{
+    text-align: center;    
+}
+.img-box img{
+    width: 200px;
+}
+nav{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+input{
+    margin-bottom: 10px;    
+}
+.message{
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: antiquewhite;
+    /* animation: message_pop 3s ease 1; */
+}
+@keyframes message_pop{
+    0%{}    
+    100%{
+        transform: translate(0 , 100px);
+        opacity: 0;
+    }    
+}

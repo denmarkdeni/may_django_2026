@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django</title>
+</head>
+<body>
+    <h1>How render a page with data</h1>
+    <h2>Planet : {{planet}}</h2>
+    <h2>Family : {{family}}</h2>
+    <h2>Data : {{name}}</h2>
+    <p>Jinja Syntax</p>
+    <p>Django Template Language</p>
+    {% if 5 < 10 %}
+        <p>Condition True</p>
+    {% endif %}
+    <ol>
+    {% for animal in types.animals %}
+        <li>{{animal}}</li>
+    {% endfor %}
+    </ol>
+    {% comment %} <p>{{types.animals[0]}}</p> {% endcomment %}
+    <a href="/home">home</a>
+    <a href="{% url 'home' %}">home</a>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<h1>Add Two Numbers</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="number" name="num1" placeholder="Number 1">
+    <input type="number" name="num2" placeholder="Number 2">
+    <input type="checkbox" name="terms">
+    <button>Add</button>
+</form>
+<p>Output : {{ answer }}</p>
+<hr>
+<p>Method - GET , POST</p>
+<p>encrypted data</p>
+<ol>
+    <li>name error - variable not defined</li>
+    <li>type error - nonetype not a int</li>
+    <li>value error</li>
+    <li>template does not exist - html name wrong , if app name not in settings.py</li>
+    <li>template syntax error - wrong jinja syntax</li>
+    <li>forbidden error - lack of csrf token</li>
+    <li>unbound local error - block scope variable</li>
+    <li>reverse not found - url not registered</li>
+    <li>attribute error - accessing not existed property</li>
+</ol>

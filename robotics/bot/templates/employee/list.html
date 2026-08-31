@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<h1>Employee List</h1>
+<p class="message">
+    {% for message in messages %}   
+        {{message}}
+    {% endfor %} 
+</p>
+<ol>
+    {% for employee in employees %}   
+        <li>{{employee.name}} ( <i>{{employee.username}}</i> )</li>
+        {% if employee.profile %}
+        <img src="{{ employee.profile.url }}" alt=""> 
+        {% endif %}
+        <ul>
+            <li>salary : {{employee.salary}}</li>
+            <li> 
+                terms -> 
+                {% if employee.terms %}
+                    👍
+                {% else %}
+                    👎
+                {% endif %}
+            </li>
+            <li>Birth : {{employee.dob}}</li>
+            <li>Email : {{employee.email}}</li>
+            <li><a href="{% url 'employee_details' employee.id %}">Edit</a></li>
+            <li><a href="{% url 'employee_delete' employee.id %}">Delete</a></li>
+        </ul>
+        <hr>
+    {% endfor %}
+</ol>

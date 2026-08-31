@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<h1>Employee Form</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="e_name" placeholder="Employee Name"> <br>
+    <input type="text" name="u_name" placeholder="Username"> <br>
+    <input type="password" name="password" placeholder="Password"> <br>
+    <input type="number" name="salary" placeholder="Salary"> <br>
+    <input type="email" name="email" placeholder="Employee Email"> <br>
+    <label for="">Date of Birth</label>
+    <input type="date" name="dob"> <br>
+    <label for="">Terms and Condition</label>
+    <input type="checkbox" name="terms"> <br>
+    <label for="">Profile Image</label>
+    <input type="file" name="profile"> <br>
+    <button>Submit</button>
+</form>
+
+<p>{{message}}</p>

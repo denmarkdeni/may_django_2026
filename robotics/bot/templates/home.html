@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Robotics</h1>
+    <nav>
+        <a href="{% url 'employee_form' %}">Create Employee</a>
+        <a href="{% url 'add_two_nums' %}">Add Numbers</a>
+        <a href="{% url 'employee_list' %}">Employees</a>
+    </nav>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius officia cum magnam sint unde dolore fuga voluptatum at fugiat totam.</p>
+    <div class="img-box">
+        <img src="{% static 'images/profile.png' %}" alt="no image" id="profile">
+    </div>
+    <p>CTRL + SHIFT + R - HARD REFRESH</p>
+    <script src="{% static 'js/script.js' %}"></script>
+</body> 
+</html>
+

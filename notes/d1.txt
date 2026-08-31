@@ -1,0 +1,50 @@
+
+django - python web framework
+opensource software
+secure platform 
+(sql injection , xss , csrf , click jacking)
+built-in features
+(admin dashboard, gateway connection)
+versatile , scalable
+
+browser(user request, url)
+wsgi.py - web server gateway interface
+urls.py - connects the url to function
+views.py - function (logic)
+models.py - database
+response(template with data)
+
+MVT architecture
+Models - Views - Templates
+
+Models - python file connected to database
+ORM - Object Relational Mapper (python <-> sql)
+Views - logical layer(rules , condition)
+Templates - presentation layer
+
+project
+app 
+
+python --version
+pip --version 
+    python installation package
+python -m venv env_name
+    virtual environment (seperate spaces for packages)
+env_name\Scripts\activate
+pip install django pillow 
+django-admin --version
+django-admin startproject project_name
+cd project_name
+python manage.py startapp app_name
+python manage.py runserver
+
+    http://127.0.0.1:8000 running
+    protocol , localhost , port
+
+python manage.py makemigrations
+    saving model changes to migration folder
+python manage.py migrate 
+    update model changes to database
+
+terminal - power shell , command prompt
+Set-ExecutionPolicy RemoteSigned

@@ -1,0 +1,12 @@
+
+models - python file connected to db
+
+python code -> SQL 
+
+ORM - object relational mapper
+
+class , variable , object
+table , field ,  record
+
+makemigrations - models changes saves to migration 
+migrate - update the changes to db

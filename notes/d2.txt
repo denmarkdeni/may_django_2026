@@ -1,0 +1,34 @@
+
+Project Folder 
+    Overall configuration
+
+    __pycache__ - temporary data that fasten project execution
+    __init__.py - mentions python folder
+    asgi.py - asychronous gateway interface
+    settings.py - project's configuration
+    urls.py - connects url to functions
+    wsgi.py - web server gateway interface
+
+App Folder 
+    Specific Feature
+
+    migrations/ - saves the models changes
+    models.py - py file connects to db
+    admin.py - configures admin dashboard
+    apps.py - app's configuration
+    tests.py - helps for testing
+    views.py - file that makes logic 
+
+db.sqlite3 - django default db
+manage.py - entry point of django
+
+steps to do
+
+    1. register the app name in project's settings
+    2. INSTALLED_APPS = []
+    3. Project urls - matches the app
+    4. App urls - matches the function
+    5. views - function that runs the logic 
+                makes response of text or html
+    6. templates/ - create this folder inside app(html files)
+    7. static/ - contains css , js , images , video files
