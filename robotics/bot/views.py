@@ -12,6 +12,7 @@ def home(request):
     #     fees = 20000
     # )
     # print("student created")
+
     return render(request, "home.html")
 # task - models
 # html form employees 
@@ -111,3 +112,49 @@ def employee_delete(request, pk):
 # products menu
 # product card - edit , delete
     
+# queryset 
+    
+# Model.objects.create()
+# Model.objects.delete()
+# Model.objects.get(field = value)
+# Model.objects.all()
+# Model.objects.filter(field = value)
+# Model.objects.exclude(field = value)
+
+from django.db.models import  Avg , Max ,Min , Count , Sum
+
+def query_employee(request):
+    keyword = request.GET.get("search") or ""
+    # employees = Employee.objects.all()
+    # employees = Employee.objects.get(id=10)
+    # employees = Employee.objects.filter(id=10)
+    # employees = Employee.objects.filter(terms=True)
+    # employees = Employee.objects.filter(terms=True, salary=20000)
+    # employees = Employee.objects.filter(salary__gt=50000)
+    # employees = Employee.objects.filter(salary__lte=50000)
+    # employees = Employee.objects.filter(name__istartswith="A")
+    # employees = Employee.objects.filter(username__iendswith="3")
+    # employees = Employee.objects.filter(role="admin",dob__gt="1995-01-01")
+    # employees = Employee.objects.filter(role__in=["hr","manager"])
+    # employees = Employee.objects.all().order_by("name")
+    # employees = Employee.objects.all().order_by("-dob")
+    # employees = Employee.objects.exclude(role="employee")
+    # employees = Employee.objects.filter(role="employee",salary__gt=100000)
+    employees = Employee.objects.filter(name__icontains=keyword)
+    count = employees.count()
+    print(employees.exists())
+    print(Employee.objects.aggregate(total_salary =Sum("salary")))
+    print(Employee.objects.aggregate(max_salary =Max("salary")))
+    print(Employee.objects.aggregate(average_salary =Avg("salary")))
+    return render(request , "employee/query_list.html", {"employees":employees , "count":count , "key":keyword})
+
+from .forms import StudentForm
+
+def student_form(request):
+    form = StudentForm()
+    if request.method == "POST":
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print("student created")
+    return render(request, "student_form.html",{"form":form} )

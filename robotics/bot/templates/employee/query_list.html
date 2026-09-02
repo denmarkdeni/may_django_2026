@@ -1,0 +1,49 @@
+<h1>Query set Employees List</h1>
+
+<style>
+    table{
+        border-collapse: collapse;
+    }
+    th,td{
+        padding: 10px;
+    }
+    th{
+        background-color: yellow;
+    }
+</style>
+
+
+<li>Employees : {{count}} records fetched.</li>
+<li>
+    <form action="">
+        <input type="text" name="search" value="{{key}}">
+        <button>search</button>
+    </form>
+</li>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Salary</th>
+        <th>Username</th>
+        <th>Terms</th>
+        <th>DOB</th>
+    </tr>
+    {% for employee in employees %}
+        <tr>
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.role}}</td>
+            <td>{{employee.salary}}</td>
+            <td>{{employee.username}}</td>
+            <td>{{employee.terms}}</td>
+            <td>{{employee.dob}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'home' %}">Home</a>
+
+
+
