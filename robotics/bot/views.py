@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
-from bot.models import Student, Employee
+from bot.models import Student, Employee, Profile
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate , login , logout
     
 def home(request):
     # return HttpResponse("THIS IS THE HOME")
@@ -158,3 +160,92 @@ def student_form(request):
             form.save()
             print("student created")
     return render(request, "student_form.html",{"form":form} )
+
+# CLASS BASED VIEWS
+
+# template , detail ,list
+# CREATE , UPDATE , DELETE
+
+from django.views.generic import TemplateView , DetailView , ListView
+from django.views.generic.edit import CreateView , UpdateView , DeleteView
+from .models import Product
+from django.urls import reverse_lazy
+
+class RoboticView(TemplateView):
+    template_name = "cbv/template.html"
+
+class ProductListView(ListView):
+    template_name = "cbv/product_list.html"
+    context_object_name = "products"
+    model = Product
+    fields = "__all__"
+
+class ProductCreateView(CreateView):
+    template_name = "cbv/product_create.html"
+    model = Product
+    fields = "__all__"
+    success_url = reverse_lazy("products")
+
+class ProductDetailView(DetailView):
+    template_name = "cbv/product_detail.html"
+    model = Product
+    fields = "__all__"
+    context_object_name = "product"
+
+class ProductUpdateView(UpdateView):
+    template_name = "cbv/product_update.html"
+    model = Product
+    fields = "__all__"
+    success_url = reverse_lazy("products")
+
+class ProductDeleteView(DeleteView):
+    template_name = "cbv/product_delete.html"
+    model = Product
+    success_url = reverse_lazy("products")
+
+# authentication vs authorisation 
+# checking whether you are a user or not.
+# checking user's permissions to allow.
+
+# register - stores new user credentials
+# login - checks if credentials stored in database
+
+# auth_user 
+# first_name , last_name , username , password
+# last_joined , first_joined , is_superuser , 
+# is_staff , email
+
+# register page  , create credentials
+# username , password , email 
+# login page , username , password 
+# if correct -> login successful
+# else - invalid credentials
+# authenticate , login , logout 
+
+def sign_up(request):
+    if request.method == "POST":
+        u = User.objects.create_user(
+            username = request.POST.get("username"),
+            password = request.POST.get("password"),
+            email = request.POST.get("email")
+        )
+        Profile.objects.create(
+            user = u,
+            role = request.POST.get("role")
+        )
+        print("user created")
+        return redirect("sign_in")
+    return render(request , "auth/sign_up.html")
+
+def sign_in(request):
+    if request.method == "POST":
+        usr = request.POST.get("username")
+        pwd = request.POST.get("password")
+        u = authenticate(username = usr , password = pwd)
+        if u:
+            login(request, u)
+            print("user loggedin successfully")
+            print(u.username , u.profile.role)
+        else:
+            print("user not found")
+    return render(request, "auth/sign_in.html")

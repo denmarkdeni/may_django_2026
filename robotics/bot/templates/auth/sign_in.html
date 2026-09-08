@@ -1,0 +1,10 @@
+<h1>Login Form</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Enter username">
+    <input type="password" name="password" placeholder="Enter password">
+    <button>Register</button>
+</form>
+
+<a href="{% url 'sign_up' %}">Still not register</a>

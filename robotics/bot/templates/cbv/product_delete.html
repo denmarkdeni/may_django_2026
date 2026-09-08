@@ -1,0 +1,7 @@
+<h1>Confirmation for Deletion</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button>Confirm</button>
+    <a href="{% url 'products' %}">Back</a>
+</form>

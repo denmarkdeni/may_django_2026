@@ -1,0 +1,16 @@
+<h1>Register Form</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Enter username">
+    <input type="password" name="password" placeholder="Enter password">
+    <input type="email" name="email" placeholder="Enter email">
+    <label for="">Role : </label>
+    <select name="role">
+        <option value="staff">staff</option>
+        <option value="customer">customer</option>
+    </select>
+    <button>Register</button>
+</form>
+
+<a href="{% url 'sign_in' %}">If already registered</a>
