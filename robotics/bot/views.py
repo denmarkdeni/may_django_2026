@@ -248,4 +248,67 @@ def sign_in(request):
             print(u.username , u.profile.role)
         else:
             print("user not found")
-    return render(request, "auth/sign_in.html")
+
+# REST API - Representational State Transfer
+
+# API - Application Programming Interface
+
+# https://127.0.0.1:8000/students/ 
+
+# https = protocol
+
+# 127.0.0.1 = host name
+
+# 8000 = port
+
+# students = path
+
+# https://127.0.0.1:8000 = origin
+
+# djangorestframework , django-cors-headers
+
+# CORS - Cross Origin Resource Sharing
+
+# CSRF - Cross Site Request Forgery 
+
+# endpoint - url that returns data
+
+# JSON - javascript object notation
+
+# frontend , stringify , parse
+
+# backend - serializer (Json <-> Python object)
+
+# pip freeze > requirements.txt
+
+# pip install -r requirements.txt
+
+# https methods - GET , POST , PUT , PATCH , DELETE
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import EmployeeSerializer
+
+@api_view(['GET'])
+def sample_view(request):
+    info = {
+        "name":"earth",
+        "contries":150 ,
+        "continents":5
+    }
+    return Response(info)
+
+@api_view(['GET'])
+def employee_info(request):
+    employees = Employee.objects.all()
+    serializer = EmployeeSerializer(employees , many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def employee_data(request, id): 
+    try:
+        employee = Employee.objects.get(id=id)
+        serializer = EmployeeSerializer(employee)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response(f"error occured : {e}")

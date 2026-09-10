@@ -22,4 +22,9 @@ urlpatterns = [
     path('product/delete/<int:pk>/',views.ProductDeleteView.as_view(), name="product_delete"),
     path('sign/in/', views.sign_in , name="sign_in"),
     path('sign/up/', views.sign_up , name="sign_up"),
+
+    # api endpoints
+    path('api/info/',views.sample_view),
+    path('api/employees/',views.employee_info),
+    path('api/employees/<int:id>/',views.employee_data),
 ] 
