@@ -27,4 +27,5 @@ urlpatterns = [
     path('api/info/',views.sample_view),
     path('api/employees/',views.employee_info),
     path('api/employees/<int:id>/',views.employee_data),
+    path('api/employees/create/',views.create_employee),
 ] 

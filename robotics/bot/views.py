@@ -312,3 +312,13 @@ def employee_data(request, id):
         return Response(serializer.data)
     except Exception as e:
         return Response(f"error occured : {e}")
+
+@api_view(['POST'])
+def create_employee(request):
+    employee = EmployeeSerializer(data=request.data)
+    if employee.is_valid():
+        employee.save()
+        # return Response({"message":"employee created"})
+        return Response(employee.data)
+    else:
+        return Response({"message":f"employee not created {employee.errors}"})
